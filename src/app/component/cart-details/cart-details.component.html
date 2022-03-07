@@ -1,0 +1,65 @@
+<div class="card-body">
+  <h6 class="d-flex justify-content-center align-items-center">
+    YOUR CART DETAILS
+  </h6>
+  <hr style="color: rgb(175, 173, 173);">
+
+  <!-- conditional rendering of (1) and (2) based on length -->
+
+  <!-- 1 -->
+  <div *ngIf="courseList.length <= 0; else elseBlock">
+    <div class="cart-list">
+      <span class="details">Your cart is empty right now. Please add courses in the cart from the list</span>
+    </div>
+
+  </div>
+
+  <!-- 2 -->
+  <ng-template #elseBlock class="cart-list">
+    <div class="cart-list">
+      <div *ngFor="let course of courseList">
+
+        <div class="row ">
+          <div class="col-4">
+            <div class="icon mr-2"></div>
+          </div>
+          <div class="col-8">
+            <div class="details-list">
+              {{course.description}}
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-7"></div>
+          <div class="col-5">
+            <b>Rs. {{course.discounted_price == null ? course.actual_price: course.discounted_price}}/-</b>
+          </div>
+        </div>
+
+        <hr style="color: rgb(175, 173, 173);">
+
+      </div>
+    </div>
+  </ng-template>
+
+  <hr>
+  <div class="total">
+    <div class="row">
+      <span style="font-size: 14px;"> Total Cart Value</span>
+
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <b>
+          Rs. {{totalCartValue}}/-
+        </b>
+      </div>
+      <div class="col-6" (click)="navigateToShoppingCart()"
+        style="font-size: 12px; top: 0; color: #ff6738; cursor: pointer;">
+        Go to checkout
+      </div>
+    </div>
+  </div>
+</div>

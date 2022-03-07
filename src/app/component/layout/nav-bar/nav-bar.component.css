@@ -1,0 +1,9 @@
+@import url(../nav-bar/../../../app.component.css);
+.navbar {
+  height: 50px;
+}
+
+.flexed {
+  display: flex;
+  justify-content: baseline;
+}

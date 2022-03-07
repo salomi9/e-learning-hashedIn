@@ -1,0 +1,7 @@
+<div class="pagination">
+  <i class="fa fa-angle-left" [ngStyle]="{'color' : '#e25b32', 'float': 'left'}"></i>
+  <a *ngFor="let i of range; let index=index" (click)="selectColorAndSendNo(index)"
+    [class.active]="viewMode == index">{{i}}</a>
+
+  <i class="fa fa-angle-right ml-8" [ngStyle]="{'color' : '#e25b32'}"></i>
+</div>
