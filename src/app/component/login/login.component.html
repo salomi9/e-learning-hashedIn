@@ -1,0 +1,40 @@
+<div class="container py-5 h-100">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div class="">
+        <div class="card-body p-5 text-center">
+
+          <h3 class="mb-2">Log In To You Account</h3>
+          <hr />
+          <form id="login-form" class="mt-4" [formGroup]="loginForm" (ngSubmit)="login()">
+
+            <p [ngClass]="{ 'border border-danger': isSubmitted && formControls['username'].errors }">
+              <input type="username" class="form-control form-control-lg rounded-0" placeholder="Username"
+                formControlName="username">
+            </p>
+
+            <div *ngIf="isSubmitted && formControls['username'].errors" class="help-block">
+              <div id="uname-required" class="text-danger" *ngIf="formControls['username'].errors['required']">Username
+                is required</div>
+            </div>
+
+            <p [ngClass]="{ 'border border-danger': isSubmitted && formControls['password'].errors }">
+              <input class="form-control form-control-lg rounded-0" type="password" placeholder="Password"
+                formControlName="password">
+            </p>
+
+            <div *ngIf="isSubmitted && formControls['password'].errors" class="help-block">
+              <div id="pwd-required" class="text-danger" *ngIf="formControls['password'].errors['required']">Password is
+                required</div>
+            </div>
+
+            <p>
+              <input id="submit-btn" class="btn login btn-lg btn-block rounded-0" type="submit" value="Log in">
+            </p>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

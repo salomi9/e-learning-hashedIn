@@ -1,0 +1,65 @@
+<div class="container">
+  <a class="bread-crumbs" href="/home"> All Courses</a>
+  <i class="fa fa-angle-right mr-3 ml-3"></i>
+  {{course.title}}
+</div>
+<br>
+
+<div class="container1">
+
+  <div class="row">
+
+    <div class="col-7">
+      <h2>{{course.title}}</h2>
+      <p style="color: grey">{{course.description}}</p>
+      <br>
+      <p style="color: #ff6738;;">
+        {{course.author}}
+      </p>
+
+      <span *ngFor="let tag of course.tags" class="badge mr-2">{{tag}}</span>
+
+    </div>
+
+    <div class="col-5">
+      <div class="videoHolder">
+        <video controls style="width: 100%; height: inherit;">
+          <source src="https://www.youtube.com/watch?v=RGKi6LSPDLU" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <br>
+      <div class="amt-card">
+        <h4>Rs 562/-</h4>
+        <p style="color: #ff6738; font-size: x-small;">
+          <i class="fa fa-clock-o" aria-hidden="true"></i> {{course.expiresInHours}} hours left for this price
+        </p>
+
+        <div class="row">
+          <div class="col-6">
+            <button class="btn custom-bg-color btn-sm mr-3" (click)="addToCart(course)">ADD TO CART</button>
+          </div>
+
+          <div class="col-6">
+            <button class="btn custom-bg-color btn-sm mr-3" (click)="toggleWishlist(course.id)">ADD TO WISHLIST</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<br>
+<div class="container">
+
+  <div class="row">
+    <div class="col-8">
+      <div class="card-body">
+        <h6>Course Details</h6>
+        <p>
+          {{course.details}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

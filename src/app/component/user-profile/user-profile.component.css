@@ -1,0 +1,39 @@
+/* .profile-card {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  border: 1px solid #f4f4f4;
+  border-radius: 0px 0px 4px 4px;
+} */
+
+.field-shadow {
+  background: #f7f8ff 0% 0% no-repeat padding-box;
+}
+
+.textarea-height {
+  height: 163px;
+}
+
+.form-label-text {
+  font-size: 12px;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
+.checkbox-shadow:checked {
+  border-color: #ff6738;
+  background-color: #ff6738;
+}
+
+.btn-save-me {
+  color: #fff;
+  background-color: #ff6738;
+  border-color: #ff6738;
+  width: 100%;
+  font-size: 13px;
+}
+
+.empty-div-height {
+  height: 80px;
+}

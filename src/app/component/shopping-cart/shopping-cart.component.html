@@ -1,0 +1,113 @@
+<div class="container">
+  <div class="row ">
+    <div class="col-9">
+      <p><b>{{courseList.length}} Courses in the Cart</b></p>
+      <div *ngFor="let course of courseList" class="card-body">
+        <div class="row ">
+          <div class="col-1">
+            <div class="icon mr-2"></div>
+          </div>
+          <div class="col-3">
+            <div class="description">
+              {{course.description}}
+              <div class="row">
+
+                <div class="col-4" *ngFor="let tag of course.tags">
+                  <span class="badge">{{tag}}</span>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-3">
+
+          </div>
+
+          <div class="col-5 align-middle">
+            <span class="author mr-5 " style="cursor: pointer; color: #1873CE;" (click)="moveToWishlist(course.id)">Move
+              To wishlist</span>
+
+            <span *ngIf="course.discounted_price !== null; else elseBlock">
+              <span class="author mr-3">Rs {{course.discounted_price}}/-</span>
+            </span>
+
+            <ng-template #elseBlock>
+              <span class="author mr-3">Rs {{course.actual_price}}/-</span>
+            </ng-template>
+
+            <i class="fa fa-trash ml-5" style="font-size: larger; cursor: pointer;"
+              (click)="removeFromCart(course.id)"></i>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="card-body">
+        <h6 class="mb-3">Total Amount</h6>
+
+        <h4 class="mb-3"><b>Rs {{totalCartValue}}/-</b></h4>
+        <p class="mb-3" *ngIf="amtSaved != 0" style="font-size: 12px; color: green;"> You have saved Rs {{amtSaved}}/-
+        </p>
+        <button class="btn custom-bg-color btn-sm mr-3" (click)="alert()" style="width: 100%;">CHECKOUT</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-9">
+      <div class="card-body">
+        <p>Recommended Courses</p>
+        <div *ngFor="let course of recommendedList" class="card-body">
+
+          <div class="row ">
+            <div class="col-1">
+              <div class="icon mr-2"></div>
+            </div>
+            <div class="col-3">
+              <div class="description">
+                {{course.description}}
+                <div class="row">
+
+                  <div class="col-4" *ngFor="let tag of course.tags">
+                    <span class="badge">{{tag}}</span>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col-2 align-middle">
+              <span class="author">{{course.author}}</span>
+            </div>
+
+            <div class="col-6 align-middle">
+              <span *ngIf="course.discounted_price !== null; else elseBlock">
+                <span class="author mr-3">Rs {{course.discounted_price}}/-</span>
+                <span class="author mr-5" style="font-size: 12px; color: grey;"><del> Rs
+                    {{course.actual_price}}/-</del></span>
+              </span>
+
+              <ng-template #elseBlock>
+                <span class="author mr-5">Rs {{course.actual_price}}/-</span>
+                <span class="author mr-5" style="font-size: 12px; color: grey;"><del>-</del></span>
+              </ng-template>
+
+              <button (click)="addToCart(course)" class="btn custom-bg-color btn-sm mr-3" type="button">
+                ADD TO CART
+              </button>
+
+              <i class="fa fa-angle-right ml-3" (click)="navigateToCourseDetails(course.id)"
+                [ngStyle]="{'color' : true ? 'grey' : 'yellow', 'cursor': 'pointer'}"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

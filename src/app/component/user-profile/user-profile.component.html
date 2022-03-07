@@ -1,0 +1,170 @@
+<div class="container">
+  <div class="row dashboard-margin">
+    <div class="col-lg-3">
+      <img src="../../assets/Mask Group 2.png">
+    </div>
+    <div class="col-lg-9">
+      <div class="card profile-card">
+        <div class="card-body">
+          <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="name" class="form-label-text">Display Name</label>
+                  <input type="text" id="displayName" name="displayName" class="form-control field-shadow"
+                    formControlName="displayName" placeholder="John Doe">
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="name" class="form-label-text">First Name</label>
+                  <input type="text" id="firstName" name="firstName" class="form-control field-shadow"
+                    formControlName="firstName" placeholder="John">
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="name" class="form-label-text">Last Name</label>
+                  <input type="text" id="lastName" name="lastName" class="form-control field-shadow"
+                    formControlName="lastName" placeholder="Doe">
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-lg-8">
+                <div class="form-group">
+                  <label for="name" class="form-label-text">About Yourself</label>
+                  <textarea class="form-control field-shadow textarea-height" name="descriptionAboutYourself"
+                    placeholder=""></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="form-group">
+
+                <label for="name" class="form-label-text">Your Area of Interest</label>
+
+                <div class="form-check" *ngFor="let interest of areaOfInterestArr">
+                  <input type="checkbox" class="form-check-input checkbox-shadow" [id]="interest.value"
+                    [value]="interest.value" (change)="onCheckboxChange($event)">
+
+                  <label class="form-check-label fs-14" [for]="interest.value">{{ interest.name }}</label>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="form-group" (change)="professionChange($event)">
+                <label for="name" class="form-label-text">Are you student or Professional</label>
+                <div class="form-check">
+                  <input class="form-check-input checkbox-shadow" type="radio" name="profileType" id="studentType"
+                    value="student" formControlName="profileType">
+                  <label class="form-check-label fs-14" for="studentType">
+                    Student
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input checkbox-shadow" type="radio" name="profileType" id="professionalType"
+                    value="professional" formControlName="profileType">
+                  <label class="form-check-label fs-14" for="professionalType">
+                    Professional
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="isStudent == false">
+              <div class="row mt-2">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-lg-7">
+                        <div class="form-group">
+                          <label for="name" class="form-label-text">How much of experience you have</label>
+                          <div class="d-flex justify-content-between">
+                            <div class="form-check">
+                              <input class="form-check-input checkbox-shadow" type="radio" name="experience" id="five"
+                                value="5" formControlName="experience">
+                              <label class="form-check-label fs-14" for="five">
+                                0-5
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input checkbox-shadow" type="radio" name="experience" id="ten"
+                                value="10" formControlName="experience">
+                              <label class="form-check-label fs-14" for="ten">
+                                5-10
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input checkbox-shadow" type="radio" name="experience" id="above"
+                                value="above" formControlName="experience">
+                              <label class="form-check-label fs-14" for="above">
+                                10&Above
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col-lg-7">
+                        <div class="form-group">
+                          <label for="name" class="form-label-text">What is your expertise</label>
+                          <div class="d-flex justify-content-between">
+                            <div class="form-check">
+                              <input class="form-check-input checkbox-shadow" type="radio" name="technology" id="java"
+                                value="java" formControlName="technology">
+                              <label class="form-check-label fs-14" for="java">
+                                Java
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input checkbox-shadow" type="radio" name="technology" id="react"
+                                value="react" formControlName="technology">
+                              <label class="form-check-label fs-14" for="react">
+                                React
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input checkbox-shadow" type="radio" name="technology"
+                                id="backend" value="backend" formControlName="technology">
+                              <label class="form-check-label fs-14" for="backend">
+                                Backend
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label for="name" class="form-label-text">Mention your role</label>
+                          <input type="text" id="role" name="role" class="form-control field-shadow fs-14"
+                            placeholder="Frontend Engineer" formControlName="role">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row mt-4 mb-2">
+              <div class="col-lg-10"></div>
+              <div class="col-lg-2">
+                <div class="form-group">
+                  <button class="btn btn-save-me form-control" type="submit"
+                    [disabled]="!profileForm.valid">Save</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="empty-div-height"></div>
+</div>

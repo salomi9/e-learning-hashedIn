@@ -1,0 +1,46 @@
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-7">
+      <h6 *ngIf="pathName == '/home'">All Courses</h6>
+      <h6 *ngIf="pathName == '/wishlist'">My Wishlist</h6>
+    </div>
+
+    <div class="col-2">
+      <select (change)="toggleCoursePriceDropDown($event)" class="form-select form-select-md mb-3"
+        aria-label=".form-select-lg example">
+        <option selected value="0">Course Price</option>
+        <option value="1">Low To High</option>
+        <option value="2">High To Low</option>
+      </select>
+    </div>
+
+    <div class="col-3">
+      <div *ngIf="pathName == '/home'" class="input-group">
+        <input type="text" class="form-control" placeholder="Search here">
+        <div class="input-group-append">
+          <button class="btn search-course" type="button">
+            <img src="../../../assets/Group 35.png" />
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-9">
+      <app-course-list></app-course-list>
+    </div>
+
+    <div class="col-3">
+      <app-cart-details></app-cart-details>
+    </div>
+
+  </div>
+
+  <app-pagination *ngIf="pathName == '/home'"></app-pagination>
+
+</div>
